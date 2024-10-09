@@ -1,0 +1,509 @@
+---
+kind: pipeline
+name: debian11-py310
+
+trigger:
+  branch:
+    - debian11-py310
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/debian11-py310.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/debian:11
+      repo: wod/cuda
+      version: "debian11-py310"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: debian12-py311
+
+trigger:
+  branch:
+    - debian12-py311
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/debian12-py311.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/debian:12
+      repo: wod/cuda
+      version: "debian12-py311"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-11.8
+
+trigger:
+  branch:
+    - cuda-11.8
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu11.8-py310.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:debian11-py310
+      repo: wod/cuda
+      version: "11.8.0-py310"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-12.1
+
+trigger:
+  branch:
+    - cuda-12.1
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu12.1-py310.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:debian11-py310
+      repo: wod/cuda
+      version: "12.1.1-py310"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-12.2
+
+trigger:
+  branch:
+    - cuda-12.2
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu12.2-py310.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:debian11-py310
+      repo: wod/cuda
+      version: "12.2.2-py310"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-12.4
+
+trigger:
+  branch:
+    - cuda-12.4
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu12.4-py310.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:debian11-py310
+      repo: wod/cuda
+      version: "12.4.1-py310"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-12.6
+
+trigger:
+  branch:
+    - cuda-12.6
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu12.6-py311.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:debian12-py311
+      repo: wod/cuda
+      version: "12.6.1-py311"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-11.8-torch2.4
+
+trigger:
+  branch:
+    - cuda-11.8-torch2.4
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu11.8-py310-torch204.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:11.8.0-py310
+      repo: wod/cuda
+      version: "11.8.0-py310-torch204"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-12.1-torch2.4
+
+trigger:
+  branch:
+    - cuda-12.1-torch2.4
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu12.1-py310-torch204.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.1.1-py310
+      repo: wod/cuda
+      version: "12.1.1-py310-torch204"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: cuda-12.4-torch2.4
+
+trigger:
+  branch:
+    - cuda-12.4-torch2.4
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+clone:
+  disable: true
+
+steps:
+  - name: fetch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-git:1.0
+    settings:
+      proxy:
+        from_secret: SOCKS5_PROXY
+
+  - name: docker
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    settings:
+      dockerfile: .beagle/cu12.4-py310-torch204.dockerfile
+      base: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.4.1-py310
+      repo: wod/cuda
+      version: "12.4.1-py310-torch204"
+      args: "TARGETOS=linux,TARGETARCH=amd64"
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: pipeline
+name: harbor
+
+trigger:
+  branch:
+    - main
+
+clone:
+  disable: true
+
+steps:
+  - name: harbor-12.1
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.1.1-py310
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.1-py310
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+  - name: harbor-12.2
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.2.2-py310
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.2-py310
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+  - name: harbor-12.4
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.4.1-py310
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.4-py310
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+  - name: harbor-12.6
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.6.1-py311
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.6-py311
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+  - name: harbor-11.8-torch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:11.8.0-py310-torch204
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:11.8-py310-torch204
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+  - name: harbor-12.1-torch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.1.1-py310-torch204
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.1-py310-torch204
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+  - name: harbor-12.4-torch
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-docker-tag:1.0
+    settings:
+      source: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.4.1-py310-torch204
+      target: registry-vpc.cn-qingdao.aliyuncs.com/wod/cuda:12.4-py310-torch204
+      registry: registry-vpc.cn-qingdao.aliyuncs.com
+      registry_user:
+        from_secret: REGISTRY_USER_ALIYUN
+      registry_password:
+        from_secret: REGISTRY_PASSWORD_ALIYUN
+
+---
+kind: secret
+name: SOCKS5_PROXY
+get:
+  name: SOCKS5_PROXY
+  path: devops-secrets
+
+---
+kind: secret
+name: REGISTRY_USER_ALIYUN
+get:
+  name: REGISTRY_USER_ALIYUN
+  path: devops-secrets
+
+---
+kind: secret
+name: REGISTRY_PASSWORD_ALIYUN
+get:
+  name: REGISTRY_PASSWORD_ALIYUN
+  path: devops-secrets
