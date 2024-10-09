@@ -21,7 +21,7 @@ curl -sL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_6
 dpkg -i .tmp/cuda-keyring_1.1-1_all.deb && \
 add-apt-repository contrib && \
 apt update && \
-apt -y install cuda-toolkit-12-6
+apt install -y cuda-toolkit-12-6
 ```
 
 ### local_installers
@@ -38,8 +38,8 @@ wget https://developer.download.nvidia.com/compute/cuda/12.6.2/local_installers/
 sudo dpkg -i cuda-repo-debian12-12-6-local_12.6.2-560.35.03-1_amd64.deb
 sudo cp /var/cuda-repo-debian12-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo add-apt-repository contrib
-sudo apt-get update
-sudo apt-get -y install cuda-toolkit-12-6
+sudo apt update
+sudo apt install -y cuda-toolkit-12-6
 
 mc cp \
   ./.tmp/cuda-repo-debian12-12-6-local_12.6.2-560.35.03-1_amd64.deb \
@@ -56,7 +56,7 @@ sudo dpkg -i cudnn-local-repo-debian12-9.3.0_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-debian12-9.3.0/cudnn-*-keyring.gpg /usr/share/keyrings/
 sudo add-apt-repository contrib
 sudo apt update
-sudo apt -y install cudnn-cuda-12
+sudo apt install -y cudnn-cuda-12
 
 mkdir -p .tmp && \
 curl \

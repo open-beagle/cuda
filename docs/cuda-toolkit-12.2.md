@@ -21,7 +21,7 @@ curl -sL https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_6
 dpkg -i .tmp/cuda-keyring_1.1-1_all.deb && \
 add-apt-repository contrib && \
 apt update && \
-apt -y install cuda-toolkit-12-2
+apt install -y cuda-toolkit-12-2
 ```
 
 ### local_installers
@@ -38,8 +38,8 @@ wget https://developer.download.nvidia.com/compute/cuda/12.2.2/local_installers/
 sudo dpkg -i cuda-repo-debian11-12-2-local_12.2.2-535.104.05-1_amd64.deb
 sudo cp /var/cuda-repo-debian11-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo add-apt-repository contrib
-sudo apt-get update
-sudo apt-get -y install cuda-toolkit-12-2
+sudo apt update
+sudo apt install -y cuda-toolkit-12-2
 
 mc cp \
   ./.tmp/cuda-repo-debian11-12-2-local_12.2.2-535.104.05-1_amd64.deb \

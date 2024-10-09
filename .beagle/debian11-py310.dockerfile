@@ -34,7 +34,7 @@ ENV BEAGLE_ROOT=/beagle
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/ && \
   python3 -m venv ~/.venv && \
   . ~/.venv/bin/activate && \
-  pip install jupyter jupyterlab-language-pack-zh-CN && \
+  pip install --no-cache jupyter jupyterlab-language-pack-zh-CN && \
   ln -s /root/.venv/bin/jupyter /usr/bin/jupyter && \
   ln -s /root/.venv/bin/jupyter-console /usr/bin/jupyter-console && \
   ln -s /root/.venv/bin/jupyter-dejavu /usr/bin/jupyter-dejavu && \

@@ -12,6 +12,6 @@ RUN curl -sL https://developer.download.nvidia.com/compute/cuda/repos/debian11/x
   dpkg -i /tmp/cuda-keyring_1.1-1_all.deb && \
   add-apt-repository contrib && \
   apt update && \
-  apt -y install cuda-toolkit-12-2 && \
+  apt install -y cuda-toolkit-12-2 && \
   apt clean && \
   rm -rf /tmp/cuda-keyring_1.1-1_all.deb
