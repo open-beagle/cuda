@@ -1,11 +1,11 @@
 ARG BASE
 
-FROM $BASE
+FROM ${BASE}
 
 ARG AUTHOR
 ARG VERSION
 
-LABEL maintainer=$AUTHOR version=$VERSION
+LABEL maintainer=${AUTHOR} version=${VERSION}
 
 RUN curl -L https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb > \
   /tmp/cuda-keyring_1.1-1_all.deb && \
